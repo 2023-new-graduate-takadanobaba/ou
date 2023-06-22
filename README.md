@@ -33,7 +33,7 @@
         - パッケージを決める
         - TodoTest.javaを作る
       - クラスを作る
-        - convert2numクラスを書く
+        - convert2num()メソッドを書く
         - 空のmain()メソッドを作る
         - chooseTset(int i)メソッドを作る
       - 入力
