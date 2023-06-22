@@ -1,7 +1,8 @@
 # ou
 
 ### todo wari
-  - specification
+  - 具体例
+  - TODOリスト
   - flow chart
   - test case
   - code
