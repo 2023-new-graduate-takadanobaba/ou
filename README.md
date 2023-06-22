@@ -44,6 +44,7 @@
         - 空のmain()メソッドを作る
         - chooseTset(int i)メソッドを作る
     - 入力
+        - System.outで`"convert2num() started"`を表示する
         - 文字列を入力する
         - BufferedReaderを作る
         - BufferedReader.readLine()で文字列を入力する
@@ -54,7 +55,7 @@
       - 小数だったらparseDouble()で変換
     - 出力
       - System.outで変換された数字を表示する
-      - 数字ではない場合はystem.outで`"数字ではありません"`を表示する
+      - 数字ではない場合はSystem.outで`"数字ではありません"`を表示する
     - 動作確認
       - 全体を動かして確認
         - “1”を入力して確認
