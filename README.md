@@ -50,7 +50,7 @@
         - BufferedReader.readLine()で文字列を入力する
         - 変数numStrに格納する
     - 処理
-      - ifで整数か？小数か？他の型か？を判断する
+      - ifで正規表現で整数か？小数か？他の型か？を判断する
       - 整数だったらparseInt()で変換
       - 小数だったらparseDouble()で変換
     - 出力
