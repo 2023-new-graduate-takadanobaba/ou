@@ -31,6 +31,7 @@ public class TodoTest {
 	
 	
 	
+	
 	private static void convert2Number() throws IOException {
 		System.out.println("convert2Number() started. Please input >");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
