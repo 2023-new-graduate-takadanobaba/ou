@@ -40,7 +40,7 @@
           - 文字列を入力する
           - BufferedReaderを作る
           - BufferedReader.readLine()で文字列を入力する
-          - 変数intStrに格納する
+          - 変数numStrに格納する
       - 処理
         - ifで整数か？小数か？他の型か？を判断する
         - 整数だったらparseInt()で変換
