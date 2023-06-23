@@ -3,6 +3,8 @@ package test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TodoTest {
 	
@@ -24,6 +26,10 @@ public class TodoTest {
 				multiOf3();
 				break;
 			}
+			case 3:{
+                sum();
+                break;
+            }
 		default: System.out.println("The number is unavailable.");
 		
 		}
@@ -75,4 +81,26 @@ public class TodoTest {
 			}
 		}				
 	}
+	
+	private static void sum() throws IOException {
+        System.out.println("sum() started. Please input >");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        boolean isStop = false;
+        List<Double> dArr = new ArrayList<>();
+
+        while (!isStop) {
+            String str = br.readLine();
+            if (str.equals("end")) {
+                isStop = true;
+                continue;
+            }
+            try {
+                dArr.add(Double.parseDouble(str));
+            } catch (Exception e) {
+                System.out.println("数字ではありません");
+            }
+        }
+
+        System.out.println("sum:"+dArr.stream().mapToDouble(d->d).sum());
+    }
 }
