@@ -7,10 +7,10 @@ public class ExampleTest {
 
     private VendingMachine sut;
 
-    @Test
-    public void test() {
-        assertEquals(true, true);
-    }
+//    @Test
+//    public void test() {
+//        assertEquals(true, true);
+//    }
 
     @BeforeEach
     public void setUp() {
@@ -18,27 +18,21 @@ public class ExampleTest {
     }
 
     @Test
-    public void ボタンを押すできる() {
-        sut.pushBtn();
-        assertEquals(true, sut.isPushed);
-    }
-
-    @Test
     public void ボタンを押すとコーラが出る() {
-        sut.pushBtn();
+        sut.pushBtn("コーラ");
         assertEquals("コーラ", sut.getBeverage("コーラ"));
     }
 
     @Test
     public void お金を払う() {
         sut.insertCoin(0, 1, 0, 0, "コーラ");
-        sut.pushBtn();
+        sut.pushBtn("コーラ");
         assertEquals("コーラ", sut.buy(0, 1, 0, 0, "コーラ"));
     }
 
     @Test
     public void お金を払わない() {
-        sut.pushBtn();
+        sut.pushBtn("コーラ");
         sut.insertCoin(0, 0, 0, 0, "コーラ");
         assertEquals("not paid enough.", sut.buy(0, 0, 0, 0, "コーラ"));
     }
@@ -51,28 +45,28 @@ public class ExampleTest {
 
     @Test
     public void ウーロン茶追加() {
-        sut.pushBtn();
+        sut.pushBtn("ウーロン茶");
         assertEquals("ウーロン茶", sut.getBeverage("ウーロン茶"));
     }
 
     @Test
     public void レッドブル() {
         sut.insertCoin(0, 2, 0, 0, "レッドブル");
-        sut.pushBtn();
+        sut.pushBtn("レッドブル");
         assertEquals("レッドブル", sut.buy(0, 2, 0, 0, "レッドブル"));
     }
 
     @Test
     public void ミルクティー() {
         sut.insertCoin(0, 2, 0, 0, "ミルクティー");
-        sut.pushBtn();
+        sut.pushBtn("ミルクティー");
         assertEquals("ミルクティー", sut.buy(0, 2, 0, 0, "ミルクティー"));
     }
 
     @Test
     public void 存在しない飲み物は指定できない() {
         sut.insertCoin(0, 2, 0, 0, "水");
-        sut.pushBtn();
+        sut.pushBtn("水");
         assertEquals("NULL", sut.buy(0, 2, 0, 0, "水"));
     }
 
@@ -103,7 +97,7 @@ public class ExampleTest {
     @Test
     public void お釣り() {
         sut.insertCoin(1, 0, 0, 0,"コーラ");
-        sut.pushBtn();
+        sut.pushBtn("コーラ");
         sut.buy(1, 0, 0, 0,"コーラ");
         assertEquals(400, sut.change);
     }
@@ -118,14 +112,14 @@ public class ExampleTest {
     @Test
     public void キャッシュレス決済() {
         sut.payByPhone("ミルクティー");
-        sut.pushBtn();
+        sut.pushBtn("ミルクティー");
         assertEquals("ミルクティー", sut.buy(0, 0, 0, 0, "ミルクティー"));
     }
 
     @Test
     public void キャッシュレス決済_返却ボタン() {
         sut.payByPhone("ミルクティー");
-        sut.pushBtn();
+        sut.pushBtn("ミルクティー");
         sut.pushReturn();
         assertEquals(150, sut.payment);
     }

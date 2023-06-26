@@ -3,8 +3,10 @@ import java.util.Map;
 public class VendingMachine {
 
     boolean isPushed = false;
+    boolean hasBeverage = true;
     boolean isPaid = false;
     boolean usePhone = false;
+
     int payment = 0;
     int change = 0;
 
@@ -21,8 +23,12 @@ public class VendingMachine {
     );
 
 
-    public void pushBtn() {
-        isPushed = true;
+    public void pushBtn(String beverage) {
+        if (beverageMap.get(beverage)!=null) {
+            isPushed = true;
+        } else {
+            hasBeverage = false;
+        }
     }
 
     public void insertCoin(int _500yenCount, int _100yenCount, int _50yenCount, int _10yenCount, String beverage) {
@@ -47,7 +53,7 @@ public class VendingMachine {
             insertCoin(_500yenCount, _100yenCount, _50yenCount, _10yenCount, beverage);
         }
 
-        if (beverageMap.get(beverage)==null) {
+        if (!hasBeverage) {
             return "NULL";
         } else if (isPaid) {
             change = payment - beverageMap.get(beverage);
