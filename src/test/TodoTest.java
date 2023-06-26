@@ -113,7 +113,38 @@ public class TodoTest {
 	private static void cal() throws IOException {
 		System.out.println("cal() started. Please input >");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		Map<String, Double> calMap = new HashMap<>();
+
+		class Calculator {
+			String sign;
+			Double num;
+
+			public Calculator(String sign, Double num) {
+				this.sign = sign;
+				this.num = num;
+			}
+
+			public Calculator() {
+			}
+
+			public String getSign() {
+				return sign;
+			}
+
+			public void setSign(String sign) {
+				this.sign = sign;
+			}
+
+			public Double getNum() {
+				return num;
+			}
+
+			public void setNum(Double num) {
+				this.num = num;
+			}
+		}
+
+		List<Calculator> calList = new ArrayList<>();
+
 		boolean isStop = false;
 		double d = 0.0;
 
@@ -121,63 +152,41 @@ public class TodoTest {
 			String str = br.readLine();
 			if (str.equals("end")) {
 				isStop = true;
-				continue;
+				break;
 			}
 
 			if (str.matches("[-+*/]?(\\d+|\\d+\\.+\\d+)")) {
-				String[] strTem = str.split("");
+				String[] strTem = str.split("(?<=[-+*/])");
 //              System.out.println(strTem[0]+","+strTem[1]);
-				calMap.put(strTem[0], Double.parseDouble(strTem[1]));
+				calList.add(new Calculator(strTem[0], Double.parseDouble(strTem[1])));
 			} else {
 				System.out.println("Illegal input.");
 			}
 		}
 
-		for (Map.Entry<String, Double> entry : calMap.entrySet()) {
-			switch (entry.getKey()) {
+		for (Calculator c : calList) {
+			switch (c.getSign()) {
 				case "-": {
-					d -= entry.getValue();
+					d -= c.getNum();
 					break;
 				}
 				case "+": {
-					d += entry.getValue();
+					d += c.getNum();
 					break;
 				}
 				case "*": {
-					d = d * entry.getValue();
+					d = d * c.getNum();
 					break;
 				}
 				case "/": {
-					d = d / entry.getValue();
+					d = d / c.getNum();
 					break;
 				}
 
 			}
+//			System.out.println("sum_: " + d);
 		}
 
-//        calMap.forEach((k, v) -> {
-//            double d = 0.0;
-//            switch (k) {
-//                case "-":{
-//                    d-=v;
-//                    break;
-//                }
-//                case "+":{
-//                    d+=v;
-//                    break;
-//                }
-//                case "*":{
-//                    d = d*v;
-//                    break;
-//                }
-//                case "/":{
-//                    d = d/v;
-//                    break;
-//                }
-//            }
-//            System.out.println(d);
-////            System.out.println(k+","+v);
-//        });
 		System.out.println("sum: " + d);
 	}
 }
