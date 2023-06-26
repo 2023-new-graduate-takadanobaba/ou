@@ -116,4 +116,5 @@ public class ExampleTest {
         sut.pushReturn();
         assertEquals(150, sut.payment);
     }
+
 }
