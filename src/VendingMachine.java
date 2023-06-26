@@ -2,10 +2,10 @@ import java.util.Map;
 
 public class VendingMachine {
 
-    boolean isPushed = false;
-    boolean hasBeverage = true;
+    private boolean isPushed = false;
+    private boolean hasBeverage = true;
     boolean isPaid = false;
-    boolean usePhone = false;
+    private boolean usePhone = false;
 
     int payment = 0;
     int change = 0;
