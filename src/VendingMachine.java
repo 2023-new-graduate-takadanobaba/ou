@@ -34,7 +34,6 @@ public class VendingMachine {
 
     public String getBeverage(String beverage) {
         if (isPushed && beverageMap.containsKey(beverage)) {
-            change = payment-beverageMap.get(beverage);
             return beverage;
         } else {
             return "NULL";
@@ -49,6 +48,7 @@ public class VendingMachine {
         }
 
         if (isPaid) {
+            change = payment-beverageMap.get(beverage);
             return getBeverage(beverage);
         } else {
             return "not paid enough.";
@@ -62,7 +62,7 @@ public class VendingMachine {
 
     public void payByPhone(String beverage) {
         usePhone = true;
-        payment = beverageMap.get(beverage);
         isPaid = true;
+        payment = beverageMap.get(beverage);
     }
 }
