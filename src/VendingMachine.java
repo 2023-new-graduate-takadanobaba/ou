@@ -39,7 +39,7 @@ public class VendingMachine {
     }
 
     public String getBeverage(String beverage) {
-        if (isPushed && beverageMap.containsKey(beverage)) {
+        if (isPushed && hasBeverage) {
             return beverage;
         } else {
             return "NULL";
