@@ -65,6 +65,6 @@ public class VendingMachine {
     public void payByPhone(String beverage) {
         usePhone = true;
         isPaid = true;
-        payment = beverageMap.get(beverage);
+        payment = beverageMap.get(beverage)==null?0:beverageMap.get(beverage);
     }
 }

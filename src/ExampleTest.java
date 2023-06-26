@@ -44,6 +44,12 @@ public class ExampleTest {
     }
 
     @Test
+    public void _100円入れてもボタンを押さないとコーラが出ない() {
+        sut.insertCoin(0, 1, 0, 0, "コーラ");
+        assertEquals("NULL", sut.buy(0, 1, 0, 0, "コーラ"));
+    }
+
+    @Test
     public void ウーロン茶追加() {
         sut.pushBtn();
         assertEquals("ウーロン茶", sut.getBeverage("ウーロン茶"));
