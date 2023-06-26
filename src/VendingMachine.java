@@ -31,9 +31,9 @@ public class VendingMachine {
         }
     }
 
-    public void insertCoin(int _500yenCount, int _100yenCount, int _50yenCount, int _10yenCount, String beverage) {
+    public void insertCoin(int _500yenCount, int _100yenCount, int _50yenCount, int _10yenCount) {
         payment = _500YEN * _500yenCount+_100YEN * _100yenCount+_50YEN * _50yenCount+_10YEN * _10yenCount;
-        if (beverageMap.get(beverage)!=null && payment >= beverageMap.get(beverage)) {
+        if (beverageMap.entrySet().stream().anyMatch(e->e.getValue()<=payment)) {
             isPaid = true;
         }
     }
@@ -46,14 +46,8 @@ public class VendingMachine {
         }
     }
 
-    public String buy(int _500yenCount, int _100yenCount, int _50yenCount, int _10yenCount, String beverage) {
-        if (usePhone) {
-            payByPhone(beverage);
-        } else {
-            insertCoin(_500yenCount, _100yenCount, _50yenCount, _10yenCount, beverage);
-        }
-
-        if (!hasBeverage) {
+    public String buy(String beverage) {
+        if (!hasBeverage || !isPushed) {
             return "NULL";
         } else if (isPaid) {
             change = payment - beverageMap.get(beverage);
