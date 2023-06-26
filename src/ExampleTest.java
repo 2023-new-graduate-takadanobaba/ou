@@ -64,6 +64,13 @@ public class ExampleTest {
     }
 
     @Test
+    public void 存在しない飲み物は指定できない() {
+        sut.insertCoin(0, 2, 0, 0, "水");
+        sut.pushBtn();
+        assertEquals("NULL", sut.buy(0, 2, 0, 0, "水"));
+    }
+
+    @Test
     public void ボタンが光る() {
         sut.insertCoin(1, 0, 0, 0,"コーラ");
         assertEquals(true, sut.isPaid);
