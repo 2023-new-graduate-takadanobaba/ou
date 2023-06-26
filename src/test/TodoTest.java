@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TodoTest {
 	
@@ -30,6 +32,10 @@ public class TodoTest {
                 sum();
                 break;
             }
+			case 4:{
+				cal();
+				break;
+			}
 		default: System.out.println("The number is unavailable.");
 		
 		}
@@ -103,4 +109,75 @@ public class TodoTest {
 
         System.out.println("sum:"+dArr.stream().mapToDouble(d->d).sum());
     }
+
+	private static void cal() throws IOException {
+		System.out.println("cal() started. Please input >");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Map<String, Double> calMap = new HashMap<>();
+		boolean isStop = false;
+		double d = 0.0;
+
+		while (!isStop) {
+			String str = br.readLine();
+			if (str.equals("end")) {
+				isStop = true;
+				continue;
+			}
+
+			if (str.matches("[-+*/]?(\\d+|\\d+\\.+\\d+)")) {
+				String[] strTem = str.split("");
+//              System.out.println(strTem[0]+","+strTem[1]);
+				calMap.put(strTem[0], Double.parseDouble(strTem[1]));
+			} else {
+				System.out.println("Illegal input.");
+			}
+		}
+
+		for (Map.Entry<String, Double> entry : calMap.entrySet()) {
+			switch (entry.getKey()) {
+				case "-": {
+					d -= entry.getValue();
+					break;
+				}
+				case "+": {
+					d += entry.getValue();
+					break;
+				}
+				case "*": {
+					d = d * entry.getValue();
+					break;
+				}
+				case "/": {
+					d = d / entry.getValue();
+					break;
+				}
+
+			}
+		}
+
+//        calMap.forEach((k, v) -> {
+//            double d = 0.0;
+//            switch (k) {
+//                case "-":{
+//                    d-=v;
+//                    break;
+//                }
+//                case "+":{
+//                    d+=v;
+//                    break;
+//                }
+//                case "*":{
+//                    d = d*v;
+//                    break;
+//                }
+//                case "/":{
+//                    d = d/v;
+//                    break;
+//                }
+//            }
+//            System.out.println(d);
+////            System.out.println(k+","+v);
+//        });
+		System.out.println("sum: " + d);
+	}
 }
